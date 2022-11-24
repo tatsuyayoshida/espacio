@@ -5,12 +5,39 @@
   -ms-box-sizing: border-box;
   box-sizing: border-box;
 }
+@font-face {
+    font-family: 'Futura-light';
+    src: url('fonts/Futura-Lig.eot');
+    src: url('fonts/Futura-Lig.eot?#iefix') format('embedded-opentype'),
+        url('fonts/Futura-Lig.woff2') format('woff2'),
+        url('fonts/Futura-Lig.woff') format('woff'),
+        url('fonts/Futura-Lig.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+    -webkit-font-size-adjust:100%;
+    font-size-adjust:100%;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Futura-book';
+    src: url('fonts/Futura-Boo.eot');
+    src: url('fonts/Futura-Boo.eot?#iefix') format('embedded-opentype'),
+        url('fonts/Futura-Boo.woff2') format('woff2'),
+        url('fonts/Futura-Boo.woff') format('woff'),
+        url('fonts/Futura-Boo.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    -webkit-font-size-adjust:100%;
+    font-size-adjust:100%;
+    font-display: swap;
+}
 html,body{
   height: 100%;
 }
 body{
   font-size: 10px;
-  font-family: 'Inter', 'Noto Sans JP',sans-serif;
+  font-family: 'Noto Sans JP', sans-serif;
   -webkit-font-size-adjust:100%;
   font-size-adjust:100%;
   font-display: swap;
