@@ -4,7 +4,7 @@ $(function() {
   function VideoPlay(){
     fvVideo.play();
   }
-  //
+  //scrollBar
   var tlsclArrow = anime.timeline({
     easing: 'easeInOutQuad',
     duration: 750,
@@ -33,7 +33,7 @@ $(function() {
       },
       complete: function(anim) {
         $('#splash').addClass('off');
-        $('#fv .inner').addClass('on');
+        $('.wrapper, #gmenu').addClass('on');
         VideoPlay();
       }
     });
@@ -53,17 +53,60 @@ $(function() {
     .add({
       targets: '#bi-logo',
       opacity:[1],
-      duration: 1000,
+      duration: 500,
       delay: 1000,
     });
 
   } else {
     $(".popup").addClass("ok");
+    $('#splash').addClass('off');
+    $('.wrapper #gmenu').addClass('on');
+    VideoPlay();
   }
-
+  //cookie判定
   $('#cookie-btn').on('click',function(){
     $.cookie("disappear", "ok", { expires: 7, path: "/" });
     $(".popup").addClass("ok");
+  });
+
+  //Slide
+  $('#visual .slide').slick({
+    autoplay:true,
+    autoplaySpeed:6000,
+    dots: true,
+    infinite: true,
+    speed: 1000,
+    fade: true,
+    cssEase: 'linear'
+  });
+
+  $('#facility .slide').slick({
+    autoplay:false,
+    dots: true,
+    infinite: true,
+    speed: 400,
+    centerMode: true,
+    centerPadding: '28rem',
+    slidesToShow: 1,
+    easing: 'easeInExpo'
+  });
+  //tabs
+  $( "#tabs" ).tabs({
+    active: 0,
+    activate: function( event, ui ) { $('#facility .slide').slick('setPosition'); },
+    hide: { effect: "fadeOut", duration: 400 }
+  });
+  $( ".tabs-bottom .ui-tabs-nav, .tabs-bottom .ui-tabs-nav > *" )
+  .removeClass( "ui-corner-all ui-corner-top" )
+  .addClass( "ui-corner-bottom" );
+  // move the nav to the bottom
+  $( ".tabs-bottom .ui-tabs-nav" ).appendTo( ".tabs-bottom" );
+
+  //hoverImg
+  $(".link.banner a").hover(function () {
+    $(this).children('img').attr("src",$(this).children("img").attr("src").replace(/^(.+)(\.[a-zA-Z]+)$/, "$1_on$2"))
+  },function () {
+    $(this).children('img').attr("src",$(this).children("img").attr("src").replace(/^(.+)_on(\.[a-zA-Z]+)$/, "$1$2"));
   });
 
 });
