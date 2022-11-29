@@ -228,6 +228,9 @@ a.link:hover{
 #cookie-btn:hover{
   background: silver;
 }
+.popup-inner .material-icons{
+  font-size: 1rem;
+}
 header{
   font-family: 'Futura-light';
   position: fixed;
@@ -245,7 +248,7 @@ header{
   transition: 1s ease;
 }
 #gmenu.on{
-    margin-top: 0;
+  margin-top: 0;
 }
 #bi-typo,#menu{
   width: 50%;
@@ -262,7 +265,7 @@ li.menu{
   margin-left: 1.4rem;
 }
 li.menu a:hover{
-color: gray;
+  color: gray;
 }
 
 footer .inner.cont{
@@ -434,9 +437,8 @@ footer .inner.cont .menu, .copyrights{
 #service .inner.cont{
   background: rgb(132 149 158 / 65%);
   max-width: 100%;
-  padding-top: 0;
-  padding-left: 0;
-  padding-right: 0;
+  padding: 0;
+  margin-bottom: 15rem;
 }
 #service .inner.cont .sec-title,#service .inner.cont p,
 #facility .inner.cont .sec-title,#facility .inner.cont p{
@@ -453,7 +455,8 @@ footer .inner.cont .menu, .copyrights{
 }
 .link.banner.sq{
   width: 50vw;
-  height: 50vw;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
   position: relative;
 }
 .link.banner img{
@@ -512,6 +515,7 @@ footer .inner.cont .menu, .copyrights{
   background: rgb(184 161 113 / 65%);
   padding-top: 0;
   margin-top: 10rem;
+  margin-bottom: 15rem;
   padding-left: 5rem;
   padding-right: 5rem;
 }
@@ -519,10 +523,10 @@ footer .inner.cont .menu, .copyrights{
   margin: 0 0.4rem;
 }
 #facility .slick-next{
-  right: -3rem;
+  right: -4rem;
 }
 #facility .slick-prev{
-  left: -3rem;
+  left: -4rem;
 }
 #tabs p{
   text-align: center;
@@ -564,4 +568,77 @@ footer .inner.cont .menu, .copyrights{
   font-family: 'Futura-book';
   margin-top: 1rem;
   font-size: 2.4rem;
+}
+@media screen and (max-width: 1080px){
+  .inner.cont{
+    max-width: calc(100% - 10rem);
+  }
+  .inner.cont p{
+    max-width: 75%;
+  }
+  #gmenu{
+    justify-content: space-between;
+  }
+  #bi-typo{
+    justify-content: flex-start;
+  }
+  #bi-typo, #menu{
+    width: max-content;
+  }
+  .popup-inner{
+    width: 100%;
+  }
+}
+@media screen and (max-width: 540px){
+  #gmenu{
+    justify-content: center;
+  }
+  #bi-typo img{
+    margin-right: 0;
+  }
+  #menu{
+    display: none;
+  }
+  #fv .inner{
+    padding: 0;
+    height: calc(100ch - 5rem);
+  }
+  #fv-mov{
+    width: 100%;
+    height: 100vh;
+  }
+  #bi{
+    height: calc(100vh - 5rem);
+  }
+  #bi h1{
+    font-size: 3.2rem;
+  }
+  .inner.cont{
+    max-width: 100%;
+    margin: 0;
+    padding: 5rem;
+  }
+  .inner.cont p, #news .list{
+    max-width: 100%;
+  }
+  #about .inner.cont{
+    padding: 10rem 5rem;
+  }
+  #visual .inner.cont{
+    padding: 2.5rem;
+  }
+  #service .inner.cont p{
+    max-width: calc(100% - 10rem);
+  }
+  .link-box{
+    flex-flow: column;
+  }
+  .link.banner.sq{
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+  }
+  #facility .inner.cont{
+    margin-bottom: 0;
+  }
 }

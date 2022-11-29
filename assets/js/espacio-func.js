@@ -25,7 +25,7 @@ $(function() {
   if($.cookie("disappear") != "ok"){
     $(".popup").removeClass("ok");
     //intro
-    var tl = anime.timeline({
+    var fvtl = anime.timeline({
       loop: false,
       easing: 'easeInOutSine',
       begin: function(anim) {
@@ -37,7 +37,7 @@ $(function() {
         VideoPlay();
       }
     });
-    tl
+    fvtl
     .add({
       targets: '#copy-title',
       opacity:[1,0],
@@ -86,9 +86,27 @@ $(function() {
     infinite: true,
     speed: 400,
     centerMode: true,
-    centerPadding: '28rem',
+    centerPadding: '25rem',
     slidesToShow: 1,
-    easing: 'easeInExpo'
+    easing: 'easeInExpo',
+    responsive: [
+  {
+    breakpoint: 1081,
+    settings: {
+      centerMode: true,
+      centerPadding: '10rem',
+      slidesToShow: 1
+    }
+  },
+  {
+    breakpoint: 541,
+    settings: {
+      centerMode: true,
+      centerPadding: '5rem',
+      slidesToShow: 1
+    }
+  }
+]
   });
   //tabs
   $( "#tabs" ).tabs({
