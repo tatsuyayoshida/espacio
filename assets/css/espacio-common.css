@@ -694,7 +694,7 @@ footer .inner.cont ul.foot-links .menu{
   }
   #menu.on ul li.menu{
     margin: 0.5rem 0;
-    font-size: 1.6rem;
+    font-size: 1.8rem;
   }
   #sp-btn{
     display: flex;
@@ -737,6 +737,7 @@ footer .inner.cont ul.foot-links .menu{
   }
   .link-box{
     flex-flow: column;
+    width: 100%;
   }
   .link.banner.sq{
     width: 100%;
