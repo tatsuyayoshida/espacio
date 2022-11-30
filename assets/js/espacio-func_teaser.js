@@ -118,7 +118,7 @@ $(function() {
   var clickEventAnchorType = (( window.ontouchstart!==null ) ? 'click':'touchend');
   $(document).on(clickEventAnchorType,'a.scrl',function(){
     if ($isScrolling === 0) {
-      var adjust = -100;
+      var adjust = -50;
       var speed = 500;
       var href= $(this).attr("href");
       var target = $(href == "#" || href == "" ? 'html' : href);

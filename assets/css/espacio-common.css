@@ -485,6 +485,10 @@ footer .inner.cont ul.foot-links .menu{
   max-width: 100%;
   padding: 15rem 10rem;
 }
+#teaser #about .inner.cont{
+  margin-bottom: 0;
+  height: 100vh;
+}
 .inner.cont p{
   font-size: 1.4rem;
   line-height: 2;
@@ -619,6 +623,9 @@ footer .inner.cont ul.foot-links .menu{
   margin-bottom: 0;
   position: relative;
   z-index: 1;
+}
+#teaser #contact .inner.cont{
+  margin-top: 0;
 }
 #contact .inner.cont p{
   text-align: center;
