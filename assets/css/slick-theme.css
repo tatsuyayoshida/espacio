@@ -2,7 +2,7 @@
 /* Slider */
 .slick-loading .slick-list
 {
-  background: #fff url('./ajax-loader.gif') center center no-repeat;
+  background: #fff url('./oval.svg') center center no-repeat;
 }
 
 /* Icons */
@@ -237,24 +237,4 @@ color: black;
 {
   opacity: .75;
   color: black;
-}
-
-@media screen and (max-width: 428px){
-  .slick-prev,.slick-next,.slide-arrow{
-    z-index: 10;
-  }
-  .slick-prev,.slide-arrow.prev-arrow{
-    left: 30%;
-  }
-  .slick-next,.slide-arrow.next-arrow{
-    right: 30%;
-  }
-}
-@media screen and (max-width: 375px){
-  .slick-prev,.slide-arrow.prev-arrow{
-    left: 32%;
-  }
-  .slick-next,.slide-arrow.next-arrow{
-    right: 32%;
-  }
 }

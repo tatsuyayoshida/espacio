@@ -54,9 +54,10 @@
   <header>
     <nav>
       <ul id="gmenu" class="flex">
-        <li id="bi-typo" class="flex flex-justify-right"><img alt="espacio" src="./assets/img/bi/espacioone_bi_typo.svg"/></li>
+        <li id="bi-typo" class="flex flex-justify-right"><a href="#fv" class="scrl"><img alt="espacio" src="./assets/img/bi/espacioone_bi_typo.svg" loading="lazy"/></a></li>
         <li id="menu">
           <ul class="flex flex-justify-right">
+            <li id="bi-sp-logo"><img alt="ESPACIO（エスパシオ）" src="./assets/img/bi/espacioone_bi_logo.svg" loading="lazy"></li>
             <li class="menu"><a href="#news" class="scrl">News</a></li>
             <li class="menu"><a href="#about" class="scrl">About ESPACIO</a></li>
             <li class="menu"><a href="#service" class="scrl">Our Service</a></li>
@@ -66,7 +67,9 @@
             <li class="menu"><a href="#contact" class="scrl">Contact Us</a></li>
           </ul>
         </li>
+        <li id="sp-btn" class="flex column"></li>
       </ul>
+
     </nav>
   </header>
   <main>
@@ -74,8 +77,8 @@
       <!--intro-->
       <section id="splash">
         <div class="inner">
-          <div id="copy-title" >BEYOND THE LUXURY</div>
-          <div id="bi-logo" ><img alt="ESPACIO（エスパシオ）" src="./assets/img/bi/espacioone_bi_logo.svg"></div>
+          <div id="copy-title">The Sailing Presidential Suite</div>
+          <div id="bi-logo" ><img alt="ESPACIO（エスパシオ）" src="./assets/img/bi/espacioone_bi_logo.svg" loading="lazy"></div>
         </div>
       </section>
       <!--intro-->
@@ -84,10 +87,10 @@
         <section id="fv">
           <div class="inner">
             <video id="fv-mov" muted loop playsinline poster="./assets/img/mov/fv_mov_cover.jpg">
-              <source src="./assets/img/mov/fv_mov_re.mp4" type="video/mp4"/>
+              <source class="mov" src="./assets/img/mov/ESPACIO_MOD_pc.mp4" type="video/mp4"/ >
             </video>
             <div id="bi" class="flex column">
-              <div id="bi-logo-w" ><img alt="ESPACIO（エスパシオ）" src="./assets/img/bi/espacioone_bi_logo_w.svg"></div>
+              <div id="bi-logo-w" ><img alt="ESPACIO（エスパシオ）" src="./assets/img/bi/espacioone_bi_logo_w.svg" loading="lazy"></div>
               <h1>The Sailing Presidential Suite</h1>
               <div class="scroll-nav-box">
                 <a href="#about" class="arrow-scroll scrl">
@@ -136,10 +139,10 @@
         <section id="visual">
           <div class="inner cont ">
             <div class="slide">
-              <div class="visual"><img alt="ESPACIO（エスパシオ）" src="./assets/img/top/topSlide-1_DJI_0021.jpg"/></div>
-              <div class="visual"><img alt="ESPACIO（エスパシオ）" src="./assets/img/top/topSlide-2_DSC3425.jpg"/></div>
-              <div class="visual"><img alt="ESPACIO（エスパシオ）" src="./assets/img/top/topSlide-3_DSC1591.jpg"/></div>
-              <div class="visual"><img alt="ESPACIO（エスパシオ）" src="./assets/img/top/topSlide-4_DSC2786.jpg"/></div>
+              <div class="visual"><picture><img alt="ESPACIO（エスパシオ）" data-lazy="./assets/img/top/topSlide-1_DJI_0021.jpg"/></picture></div>
+              <div class="visual"><picture><img alt="ESPACIO（エスパシオ）" data-lazy="./assets/img/top/topSlide-2_DSC3425.jpg"/></picture></div>
+              <div class="visual"><picture><img alt="ESPACIO（エスパシオ）" data-lazy="./assets/img/top/topSlide-3_DSC1591.jpg"/></picture></div>
+              <div class="visual"><picture><img alt="ESPACIO（エスパシオ）" data-lazy="./assets/img/top/topSlide-4_DSC2786.jpg"/></picture></div>
             </div>
           </div>
         </section>
@@ -152,7 +155,7 @@
             <div class="link-box flex">
               <div class="cruising link banner sq">
                 <a href="">
-                  <img alt="ESPACIO（エスパシオ）クルージング" src="./assets/img/top/linkBanner_cruise_gettyimages-1363879132-170667a.jpg"/>
+                  <picture><img alt="ESPACIO（エスパシオ）クルージング" src="./assets/img/top/linkBanner_cruise_gettyimages-1363879132-170667a.jpg"/ loading="lazy"></picture>
                   <div class="title-box flex column">
                     <h2 class="sec-title">Crusing</h2>
                     <h3 class="sec-title sub">クルージングプランについて</h3>
@@ -161,7 +164,7 @@
               </div>
               <div class="wedding link banner sq">
                 <a href="">
-                  <img alt="ESPACIO（エスパシオ）クルージング" src="./assets/img/top/linkBanner_wedding_DSC2836_re.jpg"/>
+                  <picture><img alt="ESPACIO（エスパシオ）クルージング" src="./assets/img/top/linkBanner_wedding_DSC2836_re.jpg"/ loading="lazy"></picture>
                   <div class="title-box flex column">
                     <h2 class="sec-title">Wedding</h2>
                     <h3 class="sec-title sub">ウェディングプランについて</h3>
@@ -188,37 +191,37 @@
               <div id="faci-1">
                 <p>Azimut価値メーカー説明文が入ります。沖縄県内約1230艘の中で、最大級のプライベートクルーザー。 最大40名でのクルージングが可能です。</p>
                 <div class="slide">
-                  <div class="visual"><img alt="ESPACIO（エスパシオ）" src="./assets/img/top/topSlide-1_DJI_0021.jpg"/></div>
-                  <div class="visual"><img alt="ESPACIO（エスパシオ）" src="./assets/img/top/topSlide-2_DSC3425.jpg"/></div>
-                  <div class="visual"><img alt="ESPACIO（エスパシオ）" src="./assets/img/top/topSlide-3_DSC1591.jpg"/></div>
-                  <div class="visual"><img alt="ESPACIO（エスパシオ）" src="./assets/img/top/topSlide-4_DSC2786.jpg"/></div>
+                  <div class="visual"><picture><img alt="ESPACIO（エスパシオ）" data-lazy="./assets/img/top/topSlide-1_DJI_0021.jpg"/></picture></div>
+                  <div class="visual"><picture><img alt="ESPACIO（エスパシオ）" data-lazy="./assets/img/top/topSlide-2_DSC3425.jpg"/></picture></div>
+                  <div class="visual"><picture><img alt="ESPACIO（エスパシオ）" data-lazy="./assets/img/top/topSlide-3_DSC1591.jpg"/></picture></div>
+                  <div class="visual"><picture><img alt="ESPACIO（エスパシオ）" data-lazy="./assets/img/top/topSlide-4_DSC2786.jpg"/></picture></div>
                 </div>
               </div>
               <div id="faci-2">
                 <p>3Fソファー・ジャグジーソーンの説明文が入ります。3Fソファー・ジャグジーソーンの説明文が入ります。 3Fソファー・ジャグジーソーンの説明文が入ります。</p>
                 <div class="slide">
-                  <div class="visual"><img alt="ESPACIO（エスパシオ）" src="./assets/img/top/topSlide-3_DSC1591.jpg"/></div>
-                  <div class="visual"><img alt="ESPACIO（エスパシオ）" src="./assets/img/top/topSlide-2_DSC3425.jpg"/></div>
-                  <div class="visual"><img alt="ESPACIO（エスパシオ）" src="./assets/img/top/topSlide-3_DSC1591.jpg"/></div>
-                  <div class="visual"><img alt="ESPACIO（エスパシオ）" src="./assets/img/top/topSlide-4_DSC2786.jpg"/></div>
+                  <div class="visual"><picture><img alt="ESPACIO（エスパシオ）" data-lazy="./assets/img/top/topSlide-3_DSC1591.jpg"/></picture></div>
+                  <div class="visual"><picture><img alt="ESPACIO（エスパシオ）" data-lazy="./assets/img/top/topSlide-2_DSC3425.jpg"/></picture></div>
+                  <div class="visual"><picture><img alt="ESPACIO（エスパシオ）" data-lazy="./assets/img/top/topSlide-3_DSC1591.jpg"/></picture></div>
+                  <div class="visual"><picture><img alt="ESPACIO（エスパシオ）" data-lazy="./assets/img/top/topSlide-4_DSC2786.jpg"/></picture></div>
                 </div>
               </div>
               <div id="faci-3">
                 <p>2Fリビング・テラス席の説明文が入ります。2Fリビング・テラス席の説明文が入ります。 2Fリビング・テラス席の説明文が入ります。</p>
                 <div class="slide">
-                  <div class="visual"><img alt="ESPACIO（エスパシオ）" src="./assets/img/top/topSlide-4_DSC2786.jpg"/></div>
-                  <div class="visual"><img alt="ESPACIO（エスパシオ）" src="./assets/img/top/topSlide-2_DSC3425.jpg"/></div>
-                  <div class="visual"><img alt="ESPACIO（エスパシオ）" src="./assets/img/top/topSlide-3_DSC1591.jpg"/></div>
-                  <div class="visual"><img alt="ESPACIO（エスパシオ）" src="./assets/img/top/topSlide-4_DSC2786.jpg"/></div>
+                  <div class="visual"><picture><img alt="ESPACIO（エスパシオ）" data-lazy="./assets/img/top/topSlide-4_DSC2786.jpg"/></picture></div>
+                  <div class="visual"><picture><img alt="ESPACIO（エスパシオ）" data-lazy="./assets/img/top/topSlide-2_DSC3425.jpg"/></picture></div>
+                  <div class="visual"><picture><img alt="ESPACIO（エスパシオ）" data-lazy="./assets/img/top/topSlide-3_DSC1591.jpg"/></picture></div>
+                  <div class="visual"><picture><img alt="ESPACIO（エスパシオ）" data-lazy="./assets/img/top/topSlide-4_DSC2786.jpg"/></picture></div>
                 </div>
               </div>
               <div id="faci-4">
                 <p>1F船首・宿泊部屋の説明文が入ります。1F船首・宿泊部屋の説明文が入ります。 1F船首・宿泊部屋の説明文が入ります。</p>
                 <div class="slide">
-                  <div class="visual"><img alt="ESPACIO（エスパシオ）" src="./assets/img/top/topSlide-2_DSC3425.jpg"/></div>
-                  <div class="visual"><img alt="ESPACIO（エスパシオ）" src="./assets/img/top/topSlide-2_DSC3425.jpg"/></div>
-                  <div class="visual"><img alt="ESPACIO（エスパシオ）" src="./assets/img/top/topSlide-3_DSC1591.jpg"/></div>
-                  <div class="visual"><img alt="ESPACIO（エスパシオ）" src="./assets/img/top/topSlide-4_DSC2786.jpg"/></div>
+                  <div class="visual"><picture><img alt="ESPACIO（エスパシオ）" data-lazy="./assets/img/top/topSlide-2_DSC3425.jpg"/></picture></div>
+                  <div class="visual"><picture><img alt="ESPACIO（エスパシオ）" data-lazy="./assets/img/top/topSlide-2_DSC3425.jpg"/></picture></div>
+                  <div class="visual"><picture><img alt="ESPACIO（エスパシオ）" data-lazy="./assets/img/top/topSlide-3_DSC1591.jpg"/></picture></div>
+                  <div class="visual"><picture><img alt="ESPACIO（エスパシオ）" data-lazy="./assets/img/top/topSlide-4_DSC2786.jpg"/></picture></div>
                 </div>
               </div>
 
@@ -231,10 +234,10 @@
         <section id="contact">
           <div class="inner cont flex column">
             <h2 class="sec-title">Contact Us</h2>
-            <p>ESPACIO Iクルージングサービスに関するご質問等は、<br/>お気軽にお問い合わせください。</p>
+            <p>ESPACIO Iクルージングサービスに関するお問い合わせやご質問等は、<br/>お気軽にお問い合わせください。</p>
             <div class="flex column">
               <h4 class="sec-title sub">E-Mail</h4>
-              <a class="link" href="mailto:e-mail@espacio.com">e-mail@espacio.com</a>
+              <a class="link btn mailto" data-subject="ESPACIO Iクルージングサービスに関するお問い合わせ" data-body="" href="espacio1+watabe-wedding.co.jp">お問い合わせはこちら</a>
             </div>
           </div>
         </section>
@@ -244,8 +247,8 @@
   </main>
   <footer>
     <div class="inner cont flex column">
-      <div id="footer-bi-logo-w" ><img alt="ESPACIO（エスパシオ）" src="./assets/img/bi/espacioone_bi_logo_w.svg"></div>
-      <ul class="flex">
+      <div id="footer-bi-logo-w" ><img alt="ESPACIO（エスパシオ）" src="./assets/img/bi/espacioone_bi_logo_w.svg" loading="lazy"></div>
+      <ul class="flex foot-nav">
         <li class="menu"><a href="#news" class="scrl">News</a></li>
         <li class="menu"><a href="#about" class="scrl">About ESPACIO</a></li>
         <li class="menu"><a href="#service" class="scrl">Our Service</a></li>
@@ -253,6 +256,12 @@
         <li class="menu"><a>Wedding</a></li>
         <li class="menu"><a href="#facility" class="scrl">Facility</a></li>
         <li class="menu"><a href="#contact" class="scrl">Contact Us</a></li>
+      </ul>
+      <ul class="flex foot-links">
+        <li class="menu"><a href="https://www.okinawa-watabewedding.co.jp/company/" target="_blank">会社概要<span class="material-icons">open_in_new</span></a></li>
+        <li class="menu"><a href="https://www.okinawa-watabewedding.co.jp/privacy/" target="_blank">プライバシーポリシー<span class="material-icons">open_in_new</span></a></li>
+        <li class="menu"><a href="https://www.okinawa-watabewedding.co.jp/gdpr_privacy" target="_blank">GDPRプライバシーポリシー<span class="material-icons">open_in_new</span></a></li>
+        <li class="menu"><a href="https://www.instagram.com/espacio.cruising.okinawa/" target="_blank">Instagram<span class="material-icons">open_in_new</span></a></li>
       </ul>
       <div class="copyrights">Copyright © 2023 ESPACIO All Rights Reserved.</div>
     </div>

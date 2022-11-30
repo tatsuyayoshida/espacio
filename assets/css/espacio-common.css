@@ -199,7 +199,7 @@ a.link:hover{
   bottom: 0;
   left: 0;
   z-index: 10000;
-  transition: .4s ease;
+  transition: .5s ease;
   font-size: 1.2rem;
 }
 .popup.ok {
@@ -228,7 +228,7 @@ a.link:hover{
 #cookie-btn:hover{
   background: silver;
 }
-.popup-inner .material-icons{
+.popup-inner .material-icons,footer .material-icons{
   font-size: 1rem;
 }
 header{
@@ -267,22 +267,59 @@ li.menu{
 li.menu a:hover{
   color: gray;
 }
-
+#sp-btn{
+  width: 4rem;
+  height: 4rem;
+  position: absolute;
+  right: 0.5rem;
+  top: 0.5rem;
+  cursor: pointer;
+  display: none;
+}
+#sp-btn::before,#sp-btn::after{
+  content: '';
+  width: 3rem;
+  height: 0.15rem;
+  border-bottom: 0.15rem solid black;
+  margin: 0.35rem 0;
+  transition: .5s ease;
+}
+#sp-btn.on::before{
+  transform: rotate(225deg);
+  margin-bottom: -0.075rem;
+}
+#sp-btn.on::after{
+  transform: rotate(-225deg);
+  margin-top: -0.075rem;
+}
+li img,#bi-logo img,#bi-logo-w img,#footer-bi-logo-w img{
+  width: 100%;
+}
+#bi-sp-logo{
+  display: none;
+}
 footer .inner.cont{
   margin: 0;
   background: #84959E;
   max-width: 100%;
   padding: 15rem 10rem;
 }
-footer ul{
-  margin: 4rem 0;
-}
 footer .inner.cont .menu, .copyrights{
-  font-family: 'Futura-light';
   font-size: 1.4rem;
   color: white;
 }
-
+footer ul.foot-nav,.copyrights{
+  font-family: 'Futura-light';
+  margin-top: 4rem;
+}
+footer ul.foot-links{
+  font-family: 'Noto Sans JP', sans-serif;
+  font-weight: 300;
+  margin-top: 1rem;
+}
+footer .inner.cont ul.foot-links .menu{
+  font-size: 1.2rem;
+}
 .wrapper{
   width: 100%;
   overflow: hidden;
@@ -564,10 +601,20 @@ footer .inner.cont .menu, .copyrights{
   margin-top: 0;
   margin-bottom: 4.8rem;
 }
-#contact .inner.cont a.link{
-  font-family: 'Futura-book';
+#contact .inner.cont a.link.btn{
   margin-top: 1rem;
-  font-size: 2.4rem;
+  font-size: 1.4rem;
+  background: #84959E;
+    line-height: initial;
+  padding: 2.1rem 4.2rem;
+  color: white;
+}
+#contact .inner.cont a.link.btn:hover{
+  color: #84959E;
+  background: silver;
+}
+#contact .inner.cont a.link.btn::after{
+  display: none;
 }
 @media screen and (max-width: 1080px){
   .inner.cont{
@@ -593,11 +640,46 @@ footer .inner.cont .menu, .copyrights{
   #gmenu{
     justify-content: center;
   }
+  #bi-typo{
+    position: relative;
+    z-index: 100;
+  }
   #bi-typo img{
     margin-right: 0;
   }
+  #bi-sp-logo{
+    display: block;
+    width: 10rem;
+    margin-bottom: 2rem;
+  }
   #menu{
     display: none;
+  }
+  #menu.on{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    height: 100vh;
+    background: white;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 99;
+  }
+  #menu.on ul{
+    flex-flow: column;
+  }
+  #menu.on ul li.menu{
+    margin: 0.5rem 0;
+    font-size: 1.6rem;
+  }
+  #sp-btn{
+    display: flex;
+    z-index: 100;
+  }
+  .popup-inner{
+    padding: 2rem 4rem;
   }
   #fv .inner{
     padding: 0;
@@ -640,5 +722,45 @@ footer .inner.cont .menu, .copyrights{
   }
   #facility .inner.cont{
     margin-bottom: 0;
+  }
+  footer .inner.cont{
+        padding: 15rem 2.5rem;
+  }
+}
+@media screen and (max-width: 428px){
+  #copy-title,#bi h1{
+    font-size: 2.5rem;
+  }
+  .popup-inner{
+    padding: 2rem;
+    font-size: 1rem;
+  }
+  #cookie-btn{
+    margin-top: 1rem;
+  }
+  .inner.cont{
+    padding: 5rem 2.5rem;
+  }
+  #facility .inner.cont,#about .inner.cont{
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+  #news .list .title {
+    width: 100%;
+  }
+  #service .inner.cont p {
+    max-width: calc(100% - 5rem);
+  }
+  #facility .slick-next {
+    right: -3rem;
+  }
+  #facility .slick-prev {
+    left: -3rem;
+  }
+  footer ul.flex{
+    flex-flow: column;
+  }
+  footer .inner.cont .menu{
+        margin: 0.5rem 0;
   }
 }
