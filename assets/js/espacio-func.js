@@ -61,6 +61,7 @@ $(function() {
         complete: function(anim) {
           $('#splash').addClass('off');
           $('.wrapper, #gmenu').addClass('on');
+          $('.wrapper .overlay').fadeOut(1000);
           VideoPlay();
         }
       });
@@ -88,6 +89,7 @@ $(function() {
     $(".popup").addClass("ok");
     $('#splash').addClass('off');
     $('.wrapper,#gmenu').addClass('on');
+    $('.wrapper .overlay').fadeOut(1000);
     VideoPlay();
   }
 
