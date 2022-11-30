@@ -323,11 +323,30 @@ footer .inner.cont ul.foot-links .menu{
 .wrapper{
   width: 100%;
   overflow: hidden;
-  opacity: 0;
 }
-.wrapper.on{
-  opacity: 1;
-  transition: 2s ease;
+.wrapper .overlay{
+  position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: white;
+    z-index: 1;
+}
+.wrapper.on .overlay{
+  animation: wrapperOverlay 2s ease forwards;
+}
+@keyframes wrapperOverlay {
+  0%{
+    opacity: 1;
+  }
+  90%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 0;
+    z-index: -10;
+  }
 }
 
 #fv .inner{
@@ -364,6 +383,9 @@ footer .inner.cont ul.foot-links .menu{
 #splash.off{
   opacity: 0;
   z-index: -1;
+}
+#splash.off .inner{
+  display: none;
 }
 #copy-title{
   font-family: 'Futura-book';
@@ -683,7 +705,8 @@ footer .inner.cont ul.foot-links .menu{
   }
   #fv .inner{
     padding: 0;
-    height: calc(100ch - 5rem);
+    height: calc(100vh - 5rem);
+    height: calc(100lvh - 5rem);
   }
   #fv-mov{
     width: 100%;
@@ -728,6 +751,9 @@ footer .inner.cont ul.foot-links .menu{
   }
 }
 @media screen and (max-width: 428px){
+  .arrow-scroll{
+    bottom: 6rem;
+  }
   #copy-title,#bi h1{
     font-size: 2.5rem;
   }

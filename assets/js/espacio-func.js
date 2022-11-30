@@ -83,7 +83,7 @@ $(function() {
         duration: 500,
         delay: 1000,
       });
-    },500);
+    },200);
   } else {
     $(".popup").addClass("ok");
     $('#splash').addClass('off');
