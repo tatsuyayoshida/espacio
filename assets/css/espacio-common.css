@@ -186,7 +186,7 @@ a.link:hover{
   height: 6.4rem;
   width: 1px;
   display: block;
-  background: black;
+  border-left: 1px solid;
   margin: 1.4rem auto;
 }
 .sec-title.sub::after{
@@ -253,13 +253,17 @@ header{
 #bi-typo,#menu{
   width: 50%;
 }
+#bi-typo{
+  margin-right: -4rem;
+  z-index: 1;
+}
 #bi-typo img{
   width: 8rem;
   height: auto;
-  margin-right: -4rem;
 }
 #menu{
   font-size: 1.4rem;
+  margin-right: -4rem;
 }
 li.menu{
   margin-left: 1.4rem;
@@ -326,28 +330,28 @@ footer .inner.cont ul.foot-links .menu{
 }
 .wrapper .overlay{
   position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background: white;
-    z-index: 9;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: white;
+  z-index: 9;
 }
 /*
 .wrapper.on .overlay{
-  animation: wrapperOverlay 2s linear forwards;
+animation: wrapperOverlay 2s linear forwards;
 }
 @keyframes wrapperOverlay {
-  0%{
-    opacity: 1;
-  }
-  99%{
-    opacity: 0;
-  }
-  100%{
-    opacity: 0;
-    z-index: -10;
-  }
+0%{
+opacity: 1;
+}
+99%{
+opacity: 0;
+}
+100%{
+opacity: 0;
+z-index: -10;
+}
 }
 */
 #fv .inner{
@@ -495,6 +499,10 @@ footer .inner.cont ul.foot-links .menu{
   max-width: 50%;
   margin-top: 1.4rem;
 }
+#about .inner.cont p{
+  text-align: center;
+  max-width: 100%;
+}
 #visual .inner.cont{
   background: none;
   backdrop-filter: none;
@@ -584,13 +592,14 @@ footer .inner.cont ul.foot-links .menu{
   padding-left: 5rem;
   padding-right: 5rem;
 }
-#facility .slide .visual{
+#facility .slide .visual,
+body.service #about .slide .visual{
   margin: 0 0.4rem;
 }
-#facility .slick-next{
+#facility .slick-next,body.service #about .slide .slick-next{
   right: -4rem;
 }
-#facility .slick-prev{
+#facility .slick-prev,body.service #about .slide .slick-prev{
   left: -4rem;
 }
 #tabs p{
@@ -636,7 +645,7 @@ footer .inner.cont ul.foot-links .menu{
   margin-top: 1rem;
   font-size: 1.4rem;
   background: #84959E;
-    line-height: initial;
+  line-height: initial;
   padding: 2.1rem 4.2rem;
   color: white;
 }
@@ -647,6 +656,98 @@ footer .inner.cont ul.foot-links .menu{
 #contact .inner.cont a.link.btn::after{
   display: none;
 }
+body#cruising,body#cruising header,body#cruising .wrapper .overlay{
+  background: #021726;
+}
+body#cruising header{
+  color: white;
+}
+body.service .menu.current{
+  color: #B8A171;
+}
+body.service .menu.current::after{
+  content: '';
+  display: block;
+  width: 2rem;
+  height: 1px;
+  margin: auto;
+  border-bottom: 1px solid;
+}
+body.service #fv picture{
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+body.service #fv picture::after{
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgb(0 0 0 / 50%);
+}
+body.service #fv .slide,body.service #fv .slide .slick-list,body.service #fv .slide .slick-track{
+  height: 100%;
+}
+body.service #fv .slide .slick-dots{
+  z-index: 1;
+}
+body.service #fv img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+body.service #service .inner.cont{
+  margin: 0;
+}
+body.service #service .inner.cont .link-box{
+  margin-top: 0;
+}
+body.service #service .inner.cont .link-box .link.banner #fv-mov{
+  width: 100%;
+  height: 100%;
+  position: static;
+}
+body#cruising #fv .title-box,body#cruising #about .inner.cont{
+  color: #B8A171;
+}
+body#wedding #fv .title-box{
+  color: white;
+}
+
+body#wedding #about .inner.cont{
+  color: #888888;
+}
+body.service #about .inner.cont{
+  padding-top: 5rem;
+}
+body.service #fv .title-box h1.sec-title{
+  font-size: 4rem;
+}
+body.service #about .inner.cont{
+  background: none;
+  backdrop-filter:none;
+}
+body.service #about .inner.cont .lede{
+  margin-bottom: 5rem;
+}
+body.service #about .inner.cont .lede p{
+  max-width: 70%;
+  text-align: left;
+}
+body.service #about .inner.cont .slides{
+  padding: 0 5rem;
+}
+body.service #about .inner.cont .slides .slick-dotted.slick-slider{
+  margin-bottom: 0.8rem;
+}
+body.service #about .inner.cont .spec{
+  margin-top: 10rem;
+}
+
 @media screen and (max-width: 1080px){
   .inner.cont{
     max-width: calc(100% - 10rem);
@@ -659,15 +760,17 @@ footer .inner.cont ul.foot-links .menu{
   }
   #bi-typo{
     justify-content: flex-start;
+    margin-right: 0;
   }
   #bi-typo, #menu{
     width: max-content;
+    margin-right: 0;
   }
   .popup-inner{
     width: 100%;
   }
 }
-@media screen and (max-width: 540px){
+@media screen and (max-width: 690px){
   #gmenu{
     justify-content: center;
   }
@@ -738,6 +841,9 @@ footer .inner.cont ul.foot-links .menu{
   #about .inner.cont{
     padding: 10rem 5rem;
   }
+  #about .inner.cont p br{
+
+  }
   #visual .inner.cont{
     padding: 2.5rem;
   }
@@ -757,7 +863,16 @@ footer .inner.cont ul.foot-links .menu{
     margin-bottom: 0;
   }
   footer .inner.cont{
-        padding: 15rem 2.5rem;
+    padding: 15rem 2.5rem;
+  }
+  body#cruising #sp-btn::before, body#cruising #sp-btn::after{
+    border-color: white;
+  }
+  body#cruising #sp-btn.on::before, body#cruising #sp-btn.on::after{
+    border-color: black;
+  }
+  body#cruising header #menu.on{
+    color: black;
   }
 }
 @media screen and (max-width: 428px){
@@ -787,16 +902,19 @@ footer .inner.cont ul.foot-links .menu{
   #service .inner.cont p {
     max-width: calc(100% - 5rem);
   }
-  #facility .slick-next {
+  #facility .slick-next,body.service #about .inner.cont .slides .slick-next{
     right: -3rem;
   }
-  #facility .slick-prev {
+  #facility .slick-prev,body.service #about .inner.cont .slides .slick-prev{
     left: -3rem;
   }
   footer ul.flex{
     flex-flow: column;
   }
   footer .inner.cont .menu{
-        margin: 0.5rem 0;
+    margin: 0.5rem 0;
+  }
+  body.service #about .inner.cont .slides{
+    padding: 0;
   }
 }

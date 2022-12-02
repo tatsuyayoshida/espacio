@@ -1,67 +1,59 @@
 @charset "utf-8";
 
 
-/* -- form#mail_form, dl, dt, dd -------------------------------------------------------------------------------- */
-
 form#mail_form * {
 	margin: 0;
 	padding: 0;
-	box-sizing: content-box;
 }
 
 form#mail_form {
-	width: 1000px;
-	margin: 50px auto;
-	background: #ffffff;
-	border: 1px solid #cccccc;
-	border-radius: 7px;
-	box-shadow: 0 0 7px rgba( 0, 0, 0, 0.2 );
-	line-height: 1.8;
+	width: calc(100% - 10rem);
+	max-width: 980px;
+	line-height: 2;
+	font-size: 1.2rem;
 }
 
 form#mail_form dl {
 	width: 90%;
 	margin: 0 auto;
-	border-bottom: 1px solid #cccccc;
-}
-
-form#mail_form dl:after,
-form#mail_form dl dt:after {
-	content: ".";
-	display: block;
-	height: 0;
-	clear: both;
-	visibility: hidden;
+	overflow: hidden;
 }
 
 form#mail_form dl dt {
+	clear: both;
 	width: 30%;
 	float: left;
-	padding: 35px 0 25px;
+	border-top: 1px solid #cccccc;
+	padding: 15px 0;
 	text-align: right;
+	overflow: hidden;
 }
 
 form#mail_form dl dd {
 	width: 65%;
 	float: right;
-	padding: 30px 0 25px 5%;
+	border-top: 1px solid #cccccc;
+	padding: 15px 0 15px 5%;
 }
 
-form#mail_form dl dt i {
-	float: left;
-	position: relative;
-	top: -2px;
+form#mail_form dl dt:first-child,
+form#mail_form dl dt:first-child + dd {
+	border: none;
+}
+
+form#mail_form dl dt span {
+	display: block;
+	font-size: 85%;
+	color: #3377ff;
 }
 
 
-
-
-/* -- span.required, span.optional -------------------------------------------------------------------------------- */
+/* -- for JavaScript ここから -------------------------------------------------------------------------------- */
 
 form#mail_form dl dt span.required,
 form#mail_form dl dt span.optional {
 	display: inline-block;
-	font-size: 85%;
+	float: left;
 	color: #ffffff;
 	padding: 4px 10px;
 	border-radius: 3px;
@@ -77,33 +69,14 @@ form#mail_form dl dt span.optional {
 	border: 1px solid #2e6da4;
 }
 
-
-
-
-/* -- error message -------------------------------------------------------------------------------- */
-
 form#mail_form dl dd span.error_blank,
 form#mail_form dl dd span.error_format,
 form#mail_form dl dd span.error_match {
 	display: block;
 	color: #ff0000;
-	margin-top: 5px;
+	margin-top: 3px;
 }
 
-
-
-
-/* -- loading -------------------------------------------------------------------------------- */
-
-div.loading-layer {
-	width: 100vw;
-	height: 100vh;
-	background: rgba( 0, 0, 0, 0.7 );
-	position: fixed;
-	left: 0px;
-	top: 0px;
-	z-index: 10000;
-}
 
 span.loading {
 	width: 50px;
@@ -148,49 +121,52 @@ span.loading {
 }
 
 
+/* -- for JavaScript ここまで -------------------------------------------------------------------------------- */
 
-
-/* -- input, select, textarea -------------------------------------------------------------------------------- */
 
 form#mail_form input[type="text"],
 form#mail_form input[type="email"],
 form#mail_form input[type="tel"] {
-	width: calc( 100% - 4% - 2px );
+	max-width: 90%;
 	padding: 7px 2%;
 	border: 1px solid #cccccc;
 	border-radius: 3px;
 	background: #fafafa;
 	-webkit-appearance: none;
-	font-size: 16px;
+	font-size: 100%;
 	font-family: inherit;
-	line-height: normal;
+	margin-top: 7px;
 }
 
 form#mail_form input[type="text"]:focus,
 form#mail_form input[type="email"]:focus,
 form#mail_form input[type="tel"]:focus,
 form#mail_form textarea:focus {
-	box-shadow: 0px 0px 5px #55ccff;
-	border: 1px solid #55ccff;
+
 	background: #ffffff;
 }
 
 form#mail_form ul li input[type="radio"],
 form#mail_form ul li input[type="checkbox"] {
-	margin: 0 10px 0 0;
+	margin-right: 10px;
+	margin-top: 10px;
+}
+
+form#mail_form ul li:first-child input[type="radio"],
+form#mail_form ul li:first-child input[type="checkbox"] {
+	margin-top: 0px;
 }
 
 form#mail_form select {
-	padding: 7px 2%;
-	border: 1px solid #cccccc;
-	font-size: 16px;
+	font-size: 100%;
 	font-family: inherit;
-	line-height: normal;
+	margin-top: 10px;
 }
 
 form#mail_form textarea {
 	display: block;
-	width: calc( 100% - 4% - 2px );
+	width: 90%;
+	max-width: 90%;
 	height: 200px;
 	padding: 7px 2%;
 	resize: vertical;
@@ -198,88 +174,66 @@ form#mail_form textarea {
 	border-radius: 3px;
 	background: #fafafa;
 	-webkit-appearance: none;
-	font-size: 16px;
+	font-size: 100%;
 	font-family: inherit;
-	line-height: normal;
 }
 
-
-
-
-/* -- ul, li -------------------------------------------------------------------------------- */
 
 form#mail_form ul {
 	list-style-type: none;
 }
 
-form#mail_form ul li label {
-	display: block;
-	margin-top: 10px;
-	padding: 7px 2%;
-	border-radius: 3px;
-	background: #f0f0f0;
-}
-
-form#mail_form ul li:first-child label {
-	margin-top: 0px;
-}
-
 form#mail_form ul li label:hover {
 	cursor: pointer;
-	background: #e0e0e0;
 }
 
 
-
-
-/* -- input design -------------------------------------------------------------------------------- */
-
-form#mail_form input[name="company"] {
-	width: 70%;
+form#mail_form input#company {
+	width: 60%;
 }
 
-form#mail_form input[name="name_1"],
-form#mail_form input[name="name_2"],
-form#mail_form input[name="read_1"],
-form#mail_form input[name="read_2"],
-form#mail_form input[name="postal"],
-form#mail_form input[name="phone"],
-form#mail_form input[name="schedule"] {
+form#mail_form input#name_1,
+form#mail_form input#name_2,
+form#mail_form input#read_1,
+form#mail_form input#read_2,
+form#mail_form input#postal,
+form#mail_form input#phone,
+form#mail_form input#schedule {
 	width: 30%;
 }
 
-form#mail_form input[name="mail_address"],
-form#mail_form input[name="mail_address_confirm"] {
+form#mail_form input#mail_address,
+form#mail_form input#mail_address_confirm {
 	width: 80%;
 }
 
-form#mail_form input[name="postal"] + a {
+form#mail_form input#postal + a {
 	display: inline-block;
-	padding: 7px 20px;
+	padding: 5px 15px;
 	border: 1px solid #46b8da;
 	border-radius: 3px;
 	background: #5bc0de;
-	font-size: 16px;
-	line-height: normal;
+	font-size: 100%;
 	color: #ffffff;
 	text-decoration: none;
 }
 
-form#mail_form input[name="postal"] + a:hover {
+form#mail_form input#postal + a:hover {
 	cursor: pointer;
 	background: #31b0d5;
 	border: 1px solid #269abc;
 }
 
+form#mail_form input#address {
+	width: 90%;
+}
 
-
-
-/* -- button -------------------------------------------------------------------------------- */
 
 form#mail_form p#form_submit {
 	width: 90%;
 	margin: 0 auto;
-	padding: 30px 0;
+	padding: 15px 0;
+	border-top: 1px solid #cccccc;
 }
 
 form#mail_form input[type="button"] {
@@ -287,7 +241,7 @@ form#mail_form input[type="button"] {
 	border: 1px solid #4cae4c;
 	border-radius: 3px;
 	background: #5cb85c;
-	font-size: 16px;
+	font-size: 100%;
 	color: #ffffff;
 	font-family: inherit;
 	-webkit-appearance: none;
@@ -299,7 +253,7 @@ form#mail_form input[type="button"]:hover {
 	border: 1px solid #398439;
 }
 
-form#mail_form input[type="button"] {
+form#mail_form input#form_submit_button {
 	margin-left: 35%;
 }
 
@@ -310,80 +264,74 @@ form#mail_form input[type="button"] {
 
 
 
-/* -- responsive ----------------------------------------------------------------------------------------------------------------------- */
+/* -- responsive ----------------------------------------------------------------------------------------------------------------- */
 
 /* 1000pixel start */
 @media screen and ( max-width: 1000px ) {
-
-
-/* -- form#mail_form, dl, dt, dd -------------------------------------------------------------------------------- */
 
 form#mail_form {
 	width: 95%;
 	font-size: 100%;
 }
 
+form#mail_form dl {
+	overflow: visible;
+}
+
 form#mail_form dl dt {
 	width: auto;
 	float: none;
-	padding: 25px 0 10px;
 	text-align: left;
+	padding: 15px 0 5px;
 	font-weight: bold;
 }
 
 form#mail_form dl dd {
 	width: auto;
 	float: none;
+	border-top: none;
 	padding: 0px 0 20px 0px;
 }
 
-form#mail_form dl dt i {
-	float: none;
-	position: static;
+form#mail_form dl dt span {
 	font-weight: normal;
 }
 
 
-
-
-/* -- span.required, span.optional -------------------------------------------------------------------------------- */
+/* -- for JavaScript ここから -------------------------------------------------------------------------------- */
 
 form#mail_form dl dt span.required,
 form#mail_form dl dt span.optional {
-	margin: 0 15px 0 0;
+	margin-right: 1em;
+	margin-bottom: 2em;
 }
 
 
+/* -- for JavaScript ここまで -------------------------------------------------------------------------------- */
 
-
-/* -- input design -------------------------------------------------------------------------------- */
-
-form#mail_form input[name="phone"],
-form#mail_form input[name="schedule"] {
-	width: 60%;
+form#mail_form input[type="text"],
+form#mail_form input[type="email"],
+form#mail_form input[type="tel"] {
+	margin-top: 0px;
 }
 
-
-
-
-/* -- button -------------------------------------------------------------------------------- */
-
-form#mail_form p#form_submit {
-	padding: 25px 0;
+form#mail_form input#postal + a {
+	padding: 6px 15px 5px;
 }
 
-form#mail_form input[type="button"] {
+form#mail_form input#form_submit_button {
 	margin-left: 0;
 }
 
+form#mail_form select {
+	font-size: 16px;
+	margin-top: 0;
+}
+
+form#mail_form input#phone,
+form#mail_form input#schedule {
+	width: 50%;
+}
 
 }
 /* 1000pixel end */
-
-
-
-
-
-
-
-

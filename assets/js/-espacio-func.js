@@ -61,7 +61,7 @@ $(function() {
         complete: function(anim) {
           $('#splash').addClass('off');
           $('.wrapper, #gmenu').addClass('on');
-          $('.wrapper .overlay').fadeOut(1500);
+          $('.wrapper .overlay').fadeOut(1000);
           VideoPlay();
         }
       });
@@ -89,10 +89,82 @@ $(function() {
     $(".popup").addClass("ok");
     $('#splash').addClass('off');
     $('.wrapper,#gmenu').addClass('on');
-    $('.wrapper .overlay').fadeOut(1500);
+    $('.wrapper .overlay').fadeOut(1000);
     VideoPlay();
   }
 
+
+  //Slide
+  $('#visual .slide').slick({
+    autoplay:true,
+    autoplaySpeed:6000,
+    dots: true,
+    infinite: true,
+    speed: 1000,
+    fade: true,
+    lazyLoad: 'ondemand',
+    cssEase: 'linear'
+  });
+
+  $('#facility .slide').slick({
+    autoplay:false,
+    dots: true,
+    infinite: true,
+    speed: 400,
+    centerMode: true,
+    centerPadding: '25rem',
+    slidesToShow: 1,
+    lazyLoad: 'ondemand',
+    easing: 'easeInExpo',
+    responsive: [
+      {
+        breakpoint: 1081,
+        settings: {
+          centerMode: true,
+          centerPadding: '10rem',
+          lazyLoad: 'ondemand',
+          slidesToShow: 1
+        }
+      },
+      {
+        breakpoint: 541,
+        settings: {
+          centerMode: true,
+          centerPadding: '5rem',
+          lazyLoad: 'ondemand',
+          slidesToShow: 1
+        }
+      },
+      {
+        breakpoint: 415,
+        settings: {
+          centerMode: true,
+          centerPadding: '2rem',
+          lazyLoad: 'ondemand',
+          slidesToShow: 1
+        }
+      },
+    ]
+  });
+
+  //hoverImg
+  $(".link.banner a").hover(function () {
+    $(this).find('img').attr("src",$(this).find("img").attr("src").replace(/^(.+)(\.[a-zA-Z]+)$/, "$1_on$2"))
+  },function () {
+    $(this).find('img').attr("src",$(this).find("img").attr("src").replace(/^(.+)_on(\.[a-zA-Z]+)$/, "$1$2"));
+  });
+
+  //tabs
+  $( "#tabs" ).tabs({
+    active: 0,
+    activate: function( event, ui ) { $('#facility .slide').slick('setPosition'); },
+    hide: { effect: "fadeOut", duration: 400 }
+  });
+  $( ".tabs-bottom .ui-tabs-nav, .tabs-bottom .ui-tabs-nav > *" )
+  .removeClass( "ui-corner-all ui-corner-top" )
+  .addClass( "ui-corner-bottom" );
+  // move the nav to the bottom
+  $( ".tabs-bottom .ui-tabs-nav" ).appendTo( ".tabs-bottom" );
 
   var $isScrolling = 0 ;
   var $timeoutId ;
@@ -118,7 +190,7 @@ $(function() {
   var clickEventAnchorType = (( window.ontouchstart!==null ) ? 'click':'touchend');
   $(document).on(clickEventAnchorType,'a.scrl',function(){
     if ($isScrolling === 0) {
-      var adjust = -50;
+      var adjust = -100;
       var speed = 500;
       var href= $(this).attr("href");
       var target = $(href == "#" || href == "" ? 'html' : href);

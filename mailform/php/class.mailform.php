@@ -9,14 +9,13 @@ class Mailform {
 	private $send_subject          = '';
 	private $send_body             = '';
 	
-	private $reply_mail            = 0;
+	private $reply_mail            = '';
 	private $send_name             = '';
 	private $thanks_subject        = '';
 	private $thanks_body           = '';
 	private $thanks_body_signature = '';
 	
 	private $domain_name           = '';
-	private $token                 = '';
 	
 	
 	private $referer               = '';
@@ -43,6 +42,10 @@ class Mailform {
 	
 	// writing time addon property
 	private $writing_time          = '0';
+	
+	
+	// token addon property
+	private $token                 = '';
 	
 	
 	// confirm addon property
@@ -72,21 +75,11 @@ class Mailform {
 	
 	// csv-record addon property
 	private $csv_save_path         = '';
-	private $duplicate_ban         = 0;
-	private $mail_on               = 1;
 	
 	
 	// block addon property
 	private $block_ip              = array();
 	private $block_word            = array();
-	private $block_address         = array();
-	
-	
-	// dear-name addon property
-	private $company_before        = '';
-	private $company_after         = '';
-	private $name_before           = '';
-	private $name_after            = '';
 	
 	
 	
@@ -109,10 +102,12 @@ class Mailform {
 		$this->thanks_body           = $rm_thanks_body;
 		$this->thanks_body_signature = $rm_thanks_body_signature;
 		
+		$this->domain_name           = $rm_domain_name;
 		
-		$this->domain_name           = $_SERVER['HTTP_HOST'];
-		$session_id                  = htmlspecialchars( session_id(), ENT_QUOTES, 'UTF-8' );
-		$this->token                 = sha1( $session_id );
+		
+		if ( file_exists( dirname( __FILE__ ) .'/../addon/token/token-include.php' ) ) {
+			include( dirname( __FILE__ ) .'/../addon/token/token-include.php' );
+		}
 		
 		
 		if ( file_exists( dirname( __FILE__ ) .'/../addon/confirm/confirm-config.php' ) ) {
@@ -142,12 +137,6 @@ class Mailform {
 		if ( file_exists( dirname( __FILE__ ) .'/../addon/block/block-config.php' ) ) {
 			include( dirname( __FILE__ ) .'/../addon/block/block-config.php' );
 			include( dirname( __FILE__ ) .'/../addon/block/config-include.php' );
-		}
-		
-		
-		if ( file_exists( dirname( __FILE__ ) .'/../addon/dear-name/dear-config.php' ) ) {
-			include( dirname( __FILE__ ) .'/../addon/dear-name/dear-config.php' );
-			include( dirname( __FILE__ ) .'/../addon/dear-name/config-include.php' );
 		}
 		
 	}
@@ -186,87 +175,8 @@ class Mailform {
 	// public token_check
 	public function token_check() {
 		
-		if ( ! ( isset( $_POST['token'] ) && $_POST['token'] === $this->token ) ) {
-			echo 'spam_failed-0004,不正な操作が行われたようです。';
-			exit;
-		}
-		
-	}
-	
-	
-	
-	
-	// public token_get
-	public function token_get() {
-		
-		if ( isset( $_POST['token_get'] ) && $_POST['token_get'] === 'true' ) {
-			echo 'token_success,'. $this->token;
-		}
-		
-	}
-	
-	
-	
-	
-	// public mail_address_check
-	public function mail_address_check( $name, $post, $bool ) {
-		
-		if ( $name === 'mail_address' || $bool === true ) {
-			if ( ! preg_match( "/^([a-zA-Z0-9])+([a-zA-Z0-9\._-])*@([a-zA-Z0-9_-])+([a-zA-Z0-9\._-]+)+$/", $post ) ) {
-				echo 'spam_failed-0005,正しくないメールアドレスです。';
-				exit;
-			}
-		}
-		
-	}
-	
-	
-	
-	
-	// public reply_address_set
-	public function reply_address_set( $name, $post ) {
-		
-		if ( $name === 'mail_address' ) {
-			$this->mail_address       = str_replace( array( "\r\n", "\r", "\n" ), '', $post );
-			$this->reply_mail_address = true;
-		}
-		
-	}
-	
-	
-	
-	
-	// public sanitize_post
-	public function sanitize_post( $p, $mode ) {
-		
-		if ( $mode === 'confirm' ) {
-			$p = htmlspecialchars( $p, ENT_QUOTES, 'UTF-8' );
-		}
-		
-		return $p;
-		
-	}
-	
-	
-	
-	
-	// public already_cookie_check
-	public function already_cookie_check() {
-		
-		if ( file_exists( dirname( __FILE__ ) .'/../addon/csv-record/include/already-cookie-check.php' ) ) {
-			include( dirname( __FILE__ ) .'/../addon/csv-record/include/already-cookie-check.php' );
-		}
-		
-	}
-	
-	
-	
-	
-	// public already_ip_check
-	public function already_ip_check() {
-		
-		if ( file_exists( dirname( __FILE__ ) .'/../addon/csv-record/include/already-ip-check.php' ) ) {
-			include( dirname( __FILE__ ) .'/../addon/csv-record/include/already-ip-check.php' );
+		if ( file_exists( dirname( __FILE__ ) .'/../addon/token/token-check.php' ) ) {
+			include( dirname( __FILE__ ) .'/../addon/token/token-check.php' );
 		}
 		
 	}
@@ -353,8 +263,15 @@ class Mailform {
 					$this->post_isset[$i] = $this->sanitize_post( $_POST[$this->order_isset[$i][1]], $mode );
 					$this->post_isset[$i] = mb_convert_kana( $this->post_isset[$i], 'KVa' );
 					
-					$this->mail_address_check( $this->order_isset[$i][1], $this->post_isset[$i], true );
-					$this->reply_address_set( $this->order_isset[$i][1], $this->post_isset[$i] );
+					if ( ! preg_match( "/^([a-zA-Z0-9])+([a-zA-Z0-9\._-])*@([a-zA-Z0-9_-])+([a-zA-Z0-9\._-]+)+$/", $this->post_isset[$i] ) ) {
+						echo 'spam_failed-0005,正しくないメールアドレスです。';
+						exit;
+					} else {
+						if ( $this->order_isset[$i][1] === 'mail_address' ) {
+							$this->mail_address       = str_replace( array( "\r\n", "\r", "\n" ), '', $this->post_isset[$i] );
+							$this->reply_mail_address = true;
+						}
+					}
 				} else {
 					$this->post_isset[$i] = '';
 				}
@@ -370,10 +287,6 @@ class Mailform {
 				if ( isset( $_POST[$this->order_isset[$i][1]] ) && $_POST[$this->order_isset[$i][1]] !== '' ) {
 					$this->post_isset[$i] = $this->sanitize_post( $_POST[$this->order_isset[$i][1]], $mode );
 					$this->post_isset[$i] = mb_convert_kana( $this->post_isset[$i], 'KVa' );
-					
-					// for Kaspersky fix
-					$this->mail_address_check( $this->order_isset[$i][1], $this->post_isset[$i], false );
-					$this->reply_address_set( $this->order_isset[$i][1], $this->post_isset[$i] );
 				} else {
 					$this->post_isset[$i] = '';
 				}
@@ -411,18 +324,6 @@ class Mailform {
 	
 	
 	
-	// public block_address
-	public function block_address() {
-		
-		if ( file_exists( dirname( __FILE__ ) .'/../addon/block/block-address.php' ) ) {
-			include( dirname( __FILE__ ) .'/../addon/block/block-address.php' );
-		}
-		
-	}
-	
-	
-	
-	
 	// public mail_set
 	public function mail_set( $set ) {
 		
@@ -440,31 +341,22 @@ class Mailform {
 		
 		for ( $i = 1; $i < $this->order_count + 1; $i++ ) {
 			
+			if ( $this->order_isset[$i][1] === 'mail_address_confirm' ) {
+				continue;
+			}
+			
 			if ( file_exists( dirname( __FILE__ ) .'/../addon/dear-name/name-get.php' ) ) {
 				include( dirname( __FILE__ ) .'/../addon/dear-name/name-get.php' );
 			}
 			
 			if ( $this->post_isset[$i] !== '' ) {
 				if ( $this->order_isset[$i][2] === 'false' ) {
-					
 					$set_body .= PHP_EOL;
 					$set_body .= PHP_EOL;
 					$set_body .= '【'.$this->order_isset[$i][3].'】'.PHP_EOL;
 					$set_body .= $this->post_isset[$i];
-					
 				} else {
-					
-					if ( $this->post_isset[$i - 1] !== '' ) {
-						$set_body .= '　'.$this->post_isset[$i];
-					} else {
-						
-						$set_body .= PHP_EOL;
-						$set_body .= PHP_EOL;
-						$set_body .= '【'.$this->order_isset[$i][3].'】'.PHP_EOL;
-						$set_body .= $this->post_isset[$i];
-						
-					}
-					
+					$set_body .= '　'.$this->post_isset[$i];
 				}
 			}
 			
@@ -498,6 +390,10 @@ class Mailform {
 			
 			if ( file_exists( dirname( __FILE__ ) .'/../addon/writing-time/writing-ok.php' ) ) {
 				include( dirname( __FILE__ ) .'/../addon/writing-time/writing-ok.php' );
+			}
+			
+			if ( file_exists( dirname( __FILE__ ) .'/../addon/token/token-ok.php' ) ) {
+				include( dirname( __FILE__ ) .'/../addon/token/token-ok.php' );
 			}
 			
 		} else {
@@ -551,42 +447,6 @@ class Mailform {
 	
 	
 	
-	// public already_cookie_set
-	public function already_cookie_set() {
-		
-		if ( file_exists( dirname( __FILE__ ) .'/../addon/csv-record/include/already-cookie-set.php' ) ) {
-			include( dirname( __FILE__ ) .'/../addon/csv-record/include/already-cookie-set.php' );
-		}
-		
-	}
-	
-	
-	
-	
-	// public already_ip_set
-	public function already_ip_set() {
-		
-		if ( file_exists( dirname( __FILE__ ) .'/../addon/csv-record/include/already-ip-set.php' ) ) {
-			include( dirname( __FILE__ ) .'/../addon/csv-record/include/already-ip-set.php' );
-		}
-		
-	}
-	
-	
-	
-	
-	// public enquete_result
-	public function enquete_result() {
-		
-		if ( file_exists( dirname( __FILE__ ) .'/../addon/csv-record/include/enquete-result.php' ) ) {
-			include( dirname( __FILE__ ) .'/../addon/csv-record/include/enquete-result.php' );
-		}
-		
-	}
-	
-	
-	
-	
 	// public mail_send
 	public function mail_send() {
 		
@@ -595,10 +455,8 @@ class Mailform {
 		
 		if ( $this->reply_mail_address === true ) {
 			$additional_headers = "From: ".$this->mail_address;
-			$additional_params  = '-f'.$this->mail_address;
 		} else {
 			$additional_headers = "From: ".$this->send_address[0];
-			$additional_params  = '-f'.$this->send_address[0];
 		}
 		
 		if ( file_exists( dirname( __FILE__ ) .'/../addon/carbon-copy/carbon-headers.php' ) ) {
@@ -609,18 +467,17 @@ class Mailform {
 			include( dirname( __FILE__ ) .'/../addon/attachment/mail-multipart.php' );
 		}
 		
-		$this->my_result = mb_send_mail( $send_address_all, $this->send_subject, $this->send_body, $additional_headers, $additional_params );
+		$this->my_result = mb_send_mail( $send_address_all, $this->send_subject, $this->send_body, $additional_headers );
 		
 		
 		if ( $this->reply_mail === 1 ) {
 			
-			$this->send_name           = mb_encode_mimeheader( $this->send_name, 'UTF-8' );
+			$this->send_name           = mb_encode_mimeheader( $this->send_name, 'ISO-2022-JP' );
 			$thanks_additional_headers = "From: ".$this->send_name." <".$this->send_address[0].">";
-			$thanks_additional_params  = '-f'.$this->send_address[0];
 			
 			if ( $this->reply_mail_address === true ) {
-				$this->you_result = mb_send_mail( $this->mail_address, $this->thanks_subject, $this->thanks_body, $thanks_additional_headers, $thanks_additional_params );
-			} else {
+				$this->you_result = mb_send_mail( $this->mail_address, $this->thanks_subject, $this->thanks_body, $thanks_additional_headers );
+			}else{
 				$this->you_result = true;
 			}
 			
@@ -649,7 +506,6 @@ class Mailform {
 			} else {
 				echo 'send_failed,エラーが起きました。<br />ご迷惑をおかけして大変申し訳ありません。';
 			}
-			
 		}
 		
 	}
@@ -675,6 +531,20 @@ class Mailform {
 		if ( file_exists( dirname( __FILE__ ) .'/../addon/confirm/confirm-set.php' ) ) {
 			include( dirname( __FILE__ ) .'/../addon/confirm/confirm-set.php' );
 		}
+		
+	}
+	
+	
+	
+	
+	// public sanitize_post
+	public function sanitize_post( $p, $mode ) {
+		
+		if ( $mode === 'confirm' ) {
+			$p = htmlspecialchars( $p, ENT_QUOTES, 'UTF-8' );
+		}
+		
+		return $p;
 		
 	}
 	
