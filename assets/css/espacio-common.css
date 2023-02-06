@@ -163,6 +163,17 @@ body{
 .sec-title.sub{
   font-size: 1.6rem;
 }
+#contact h5.sec-title.sub{
+  font-size: 2.4rem;
+  margin-top: 1rem;
+  font-weight: 600;
+}
+#about .sec-title.sub{
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  margin-top: 0.75rem;
+  font-family: 'Noto Sans JP';
+}
 a.link{
   font-family: 'Futura-light';
   font-size: 2rem;
@@ -324,6 +335,16 @@ footer ul.foot-links{
 footer .inner.cont ul.foot-links .menu{
   font-size: 1.2rem;
 }
+footer .inner.cont ul.foot-links.icon .menu{
+  margin-left: 0;
+}
+footer #insta{
+  vertical-align: bottom;
+  fill: white;
+}
+footer a:hover #insta{
+  fill:gray;
+}
 .wrapper{
   width: 100%;
   overflow: hidden;
@@ -473,7 +494,8 @@ z-index: -10;
   font-size: 1.4rem;
   line-height: 1.75;
   margin-bottom: 6.4rem;
-  max-width: 90%;
+  max-width: 85%;
+      width: 85%;
 }
 #news .list:last-child{
   margin-bottom: 0;
@@ -483,6 +505,9 @@ z-index: -10;
 }
 #news .list .title{
   width: 80%;
+}
+#news .list  a:hover{
+  color: gray;
 }
 #about .inner.cont{
   background: rgb(255 255 255 / 65%);
@@ -625,6 +650,11 @@ body.service #about .slide .visual{
   border-bottom: 1px solid;
   margin: auto;
 }
+#tabs .slick-slide img{
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  height: 100%;
+}
 #contact .inner.cont{
   background: white;
   backdrop-filter: none;
@@ -642,7 +672,7 @@ body.service #about .slide .visual{
   margin-bottom: 4.8rem;
 }
 #contact .inner.cont a.link.btn{
-  margin-top: 1rem;
+  margin: 1rem 0.5rem 0 0.5rem;
   font-size: 1.4rem;
   background: #84959E;
   line-height: initial;
@@ -747,6 +777,95 @@ body.service #about .inner.cont .slides .slick-dotted.slick-slider{
 body.service #about .inner.cont .spec{
   margin-top: 10rem;
 }
+body#news-index #service .inner.cont{
+  background: none;
+}
+body#news-index #service .inner.cont .sec-title,
+body#news-index #service .inner.cont p{
+  color: black;
+}
+body#news-index #service .inner.cont .sec-title::after{
+  background: white;
+}
+body#news-index #service .inner.cont .sec-title{
+  margin-top: 4rem;
+}
+body#news-index #service .inner.cont p{
+  margin-bottom: 4rem;
+}
+body#news-index #service .inner.cont .cruising .title-box .sec-title{
+  color: #B8A171;
+}
+body#news-index #service .inner.cont .wedding .title-box .sec-title{
+  color: #D9D9D9;
+}
+body#news-index #news a.link{
+  margin: 1rem;
+  color: #888888;
+}
+body#news-index #news a.link.index{
+  margin: 0;
+  font-size: 1.4rem;
+  font-family: 'Noto Sans JP', sans-serif;
+}
+body#news-index #news a.link.index .material-symbols-outlined{
+  vertical-align: middle;
+}
+body#news-index #news a.link.current,
+body#news-index #news a.link.index{
+  color: black;
+}
+body#news-index #news a.link::after{
+  width: auto;
+}
+body#news-index #news a.link.index::after{
+  width: 4rem;
+}
+body#news-index #news a.link.arrow::after{
+  display: none;
+}
+body#news-index.article #news .inner.cont{
+  background: none;
+}
+body#news-index.article .article-box{
+  margin: 4rem 0;
+  max-width: 980px;
+}
+body#news-index.article .article-box h1.sec-title{
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 2rem;
+  line-height: 2;
+  margin-bottom: 2rem;
+  font-weight: 500;
+}
+body#news-index.article .article-box h1.sec-title::after{
+  display: none;
+}
+body#news-index.article .article-head,
+body#news-index.article .article-body{
+  width: 100%;
+}
+body#news-index.article .article-body img,
+body#news-index.article .article-body iframe{
+  width: 90%;
+  margin: auto;
+  display: block;
+}
+body#news-index.article .article-body iframe{
+  aspect-ratio: 16 / 9;
+  height: 100%;
+}
+body#news-index.article .article-head{
+  margin-bottom: 4rem;
+}
+body#news-index.article .article-head time{
+  font-size: 1.4rem;
+}
+body#news-index.article #news .inner.cont .article-body p{
+  font-size: 1.6rem;
+  margin: 3.2rem 0;
+  max-width: 100%;
+}
 
 @media screen and (max-width: 1080px){
   .inner.cont{
@@ -768,6 +887,14 @@ body.service #about .inner.cont .spec{
   }
   .popup-inner{
     width: 100%;
+  }
+}
+@media screen and (max-width: 768px){
+  #about .inner.cont{
+    padding: 15rem 5rem;
+  }
+  #contact .inner.cont a.link.btn.sp{
+    display: none;
   }
 }
 @media screen and (max-width: 690px){
@@ -838,6 +965,9 @@ body.service #about .inner.cont .spec{
   .inner.cont p, #news .list{
     max-width: 100%;
   }
+  #teaser #about .inner.cont{
+    height: auto;
+  }
   #about .inner.cont{
     padding: 10rem 5rem;
   }
@@ -874,6 +1004,10 @@ body.service #about .inner.cont .spec{
   body#cruising header #menu.on{
     color: black;
   }
+  #contact .inner.cont a.link.btn{
+    width: 100%;
+    text-align: center;
+  }
 }
 @media screen and (max-width: 428px){
   .arrow-scroll{
@@ -892,9 +1026,15 @@ body.service #about .inner.cont .spec{
   .inner.cont{
     padding: 5rem 2.5rem;
   }
+  #about .inner.cont p{
+    text-align: left;
+  }
+  #about .inner.cont p br{
+    display: none;
+  }
   #facility .inner.cont,#about .inner.cont{
-    padding-left: 2.5rem;
-    padding-right: 2.5rem;
+    padding-left: 3rem;
+    padding-right: 3rem;
   }
   #news .list .title {
     width: 100%;

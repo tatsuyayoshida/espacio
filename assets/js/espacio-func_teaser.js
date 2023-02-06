@@ -135,6 +135,7 @@ $(function() {
   });
 
   //mailto
+  /*
   var clickEventMailto = (( window.ontouchstart!==null ) ? 'click':'touchend');
   $(document).on(clickEventMailto,'.mailto',function(){
     if ($isScrolling === 0) {
@@ -153,6 +154,6 @@ $(function() {
       return false;
     }
   });
-
+*/
 
 });
